@@ -4,8 +4,10 @@
 
 1. **Build the release APK:**
    ```bash
-   flutter build apk --release
+   flutter build apk --release --no-codesign
    ```
+   
+   Note: If you encounter Xcode license issues, the `--no-codesign` flag helps.
    
    The APK will be generated at: `build/app/outputs/flutter-apk/app-release.apk`
 
@@ -35,10 +37,8 @@
   2. Configure signing in `android/app/build.gradle.kts`
   3. Add your keystore credentials to `android/key.properties`
 
-- ProGuard/R8 is enabled for release builds to:
-  - Shrink code size
-  - Obfuscate code
-  - Optimize performance
+- ProGuard/R8 is currently disabled (minification can be enabled later with proper rules)
+  - Code shrinking can be enabled by uncommenting settings in `android/app/build.gradle.kts`
 
 - Debug logging is disabled in release builds (using `kDebugMode` checks)
 
@@ -49,6 +49,7 @@
 - **App Name:** Demo
 - **Package ID:** com.example.red_cross_app
 - **Version:** 1.0.0+1
-- **Minify Enabled:** Yes
-- **Shrink Resources:** Yes
+- **Minify Enabled:** No (disabled to avoid R8 issues)
+- **Shrink Resources:** No
+- **Signing:** Debug keys (change for production)
 

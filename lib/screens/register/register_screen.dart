@@ -429,7 +429,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               } catch (launchError) {
                 // URL launch failed - user is registered but payment failed
                 if (kDebugMode) {
-                  debugPrint('Error launching membership payment URL: $launchError');
+                  debugPrint(
+                      'Error launching membership payment URL: $launchError');
                 }
               }
             }

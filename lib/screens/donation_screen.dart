@@ -23,7 +23,6 @@ class _DonationScreenState extends State<DonationScreen> {
   final _messageController = TextEditingController();
   bool _isLoading = false;
 
-
   String? _selectedAmount;
 
   final List<int> _presetAmounts = [50, 100, 200, 500, 1000, 2000];
@@ -55,7 +54,7 @@ class _DonationScreenState extends State<DonationScreen> {
       final phone = _phoneController.text.trim();
       final amount = _amountController.text.trim();
       final message = _messageController.text.trim();
-      
+
       if (kDebugMode) {
         debugPrint('🔄 DONATION PROCESS STARTED');
         debugPrint('📝 Form Data: Name=$name, Email=$email, Amount=$amount');
@@ -105,7 +104,7 @@ class _DonationScreenState extends State<DonationScreen> {
       };
 
       final apiUrl = '${ApiConfig.paymentsUrl}/donation';
-      
+
       if (kDebugMode) {
         debugPrint('🌐 API Endpoint: $apiUrl');
       }
@@ -167,7 +166,8 @@ class _DonationScreenState extends State<DonationScreen> {
                   );
                   if (launched2) {
                     if (kDebugMode) {
-                      debugPrint('✅ Payment URL launched with platform default mode!');
+                      debugPrint(
+                          '✅ Payment URL launched with platform default mode!');
                     }
                     return;
                   }
